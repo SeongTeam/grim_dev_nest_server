@@ -10,12 +10,12 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get()
-  getQuizOfWeek(): string {
-    return this.appService.getHello();
+  @Get('/quiz_of_week')
+  getQuizOfWeek() {
+    return this.appService.getQuiz();
   }
-  @Get()
-  getArtOfWeek(): string {
-    return this.appService.getHello();
+  @Get('artwork_of_week')
+  getArtOfWeek() {
+    return this.appService.getArtWork();
   }
 }
