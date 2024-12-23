@@ -9,4 +9,13 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+  @Get()
+  getQuizOfWeek(): string {
+    return this.appService.getHello();
+  }
+  @Get()
+  getArtOfWeek(): string {
+    return this.appService.getHello();
+  }
 }
