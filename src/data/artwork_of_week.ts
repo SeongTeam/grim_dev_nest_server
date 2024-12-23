@@ -1,4 +1,6 @@
-export const artworkData1 = [
+export const artworkData1 = {
+  "dataName": "artwork of week",
+  "data":[
   {
     id: '57727228edc2cb3880c4255a',
     title: 'Haystack',
@@ -181,4 +183,5 @@ export const artworkData1 = [
       'https://uploads0.wikiart.org/images/henri-de-toulouse-lautrec/self-portrait-in-front-of-a-mirror-1883.jpg!Large.jpg',
     height: 600,
   },
-];
+]
+};

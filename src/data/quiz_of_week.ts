@@ -1,4 +1,7 @@
-export const quizData1 = [
+export const quizData1 = 
+{
+  "dataName": "quiz of week",
+  "data":[
   {
     id: '57727251edc2cb3880c4be8a',
     title: 'View At Rouelles Le Havre',
@@ -385,4 +388,4 @@ export const quizData1 = [
       'https://uploads4.wikiart.org/images/claude-monet/pont-of-honfleur-sun.jpg!Large.jpg',
     height: 546,
   },
-];
+]};
