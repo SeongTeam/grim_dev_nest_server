@@ -4,7 +4,12 @@ import * as fs from 'fs';
 import { pipeline } from 'stream';
 import { promisify } from 'util';
 import { ConfigService } from '@nestjs/config';
-import { WASABI_ACCESS_KEY, WASABI_SECRET_KEY } from 'src/const/env_keys.const';
+import {
+  WASABI_ACCESS_KEY,
+  WASABI_BUCKET_ENDPOINT,
+  WASABI_BUCKET_REGION,
+  WASABI_SECRET_KEY,
+} from 'src/const/env_keys.const';
 
 const pipelineAsync = promisify(pipeline);
 
@@ -14,8 +19,8 @@ export class WasabiService {
 
   constructor(private readonly configService: ConfigService) {
     this.s3 = new S3Client({
-      region: 'ap-northeast-1', // this is Tokyo region
-      endpoint: 'https://s3.ap-northeast-1.wasabisys.com', // Tokyo region endpoint
+      region: process.env[WASABI_BUCKET_REGION], // this is Tokyo region
+      endpoint: process.env[WASABI_BUCKET_ENDPOINT], // Tokyo region endpoint
       credentials: {
         accessKeyId: process.env[WASABI_ACCESS_KEY], // Wasabi Access Key
         secretAccessKey: process.env[WASABI_SECRET_KEY],
