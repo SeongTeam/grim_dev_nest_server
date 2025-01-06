@@ -10,6 +10,7 @@ import {
   WASABI_BUCKET_REGION,
   WASABI_SECRET_KEY,
 } from 'src/const/env_keys.const';
+import DownloadFileResult from './const/downloadFileResult';
 
 const pipelineAsync = promisify(pipeline);
 
@@ -38,13 +39,12 @@ export class WasabiService {
     bucketName: string,
     key: string,
     destinationPath: string,
-  ): Promise<void> {
+  ): Promise<DownloadFileResult> {
     try {
       const command = new GetObjectCommand({
         Bucket: bucketName,
         Key: key,
       });
-
       const response = await this.s3.send(command);
 
       if (response.Body) {
@@ -53,12 +53,28 @@ export class WasabiService {
           fs.createWriteStream(destinationPath),
         );
         console.log(`File downloaded successfully to ${destinationPath}`);
+        return {
+          success: true,
+          message: 'File downloaded successfully.',
+          destinationPath,
+        };
       } else {
-        console.error('No file body received from S3.');
+        const errorMessage = 'No file body received from S3.';
+        console.error(errorMessage);
+        return {
+          success: false,
+          message: errorMessage,
+        };
       }
     } catch (error) {
       console.error('Error downloading file:', error);
-      throw error;
+      console.error('show parmenter', bucketName, key, destinationPath);
+
+      return {
+        success: false,
+        message: 'Error downloading file.',
+        error,
+      };
     }
   }
 }

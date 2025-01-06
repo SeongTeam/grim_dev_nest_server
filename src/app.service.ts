@@ -35,6 +35,8 @@ export class AppService {
       process.env[BUCKET_PATH_KEY] + quizFileName,
       process.env[DOWNLOAD_DESTINATION_PATH] + quizFileName,
     );
+
+    return { 'artwork download': artworkResult, 'quiz download': quizResult };
   }
 
   getArtWork() {

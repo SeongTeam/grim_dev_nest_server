@@ -16,20 +16,20 @@ export class TasksService {
   constructor(private readonly wasabiService: WasabiService) {}
 
   // // 매주 월요일 00:00에 실행되는 작업
-  // @Cron('0 0 * * 1')
-  // handleWeeklyTask() {
-  //   this.logger.log('주간 작업이 실행되었습니다.');
-  //   // 여기에 원하는 작업 로직을 추가합니다.
-  // }
-  @Cron('*/1 * * * *')
-  handleMinTestTask() {
-    this.logger.log('1분마다 작업 시작');
-    this.wasabiService.downloadFile(
-      'bbucket1',
-      'test1/textfile.txt',
-      './download/hello_world.txt',
-    );
+  @Cron('0 0 * * 1')
+  handleWeeklyTask() {
+    this.logger.log('매주 월요일 00:00에 실행 되었습니다.');
+    // 여기에 원하는 작업 로직을 추가합니다.
   }
+  // @Cron('*/1 * * * *')
+  // handleMinTestTask() {
+  //   this.logger.log('1분마다 작업 시작');
+  //   this.wasabiService.downloadFile(
+  //     'bbucket1',
+  //     'test1/textfile.txt',
+  //     './download/hello_world.txt',
+  //   );
+  // }
   // 매주 토요일 오전 8시에 실행되는 작업
   // @Cron('0 8 * * 6')
   // handleWeeklySaturDayTask() {
