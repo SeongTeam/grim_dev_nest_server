@@ -6,6 +6,7 @@ import { WasabiController } from './wasabi/wasabi.controller';
 import { WasabiModule } from './wasabi/wasabi.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TasksModule } from './tasks/tasks.module';
+import { WasabiService } from './wasabi/wasabi.service';
 
 @Module({
   imports: [
@@ -18,6 +19,6 @@ import { TasksModule } from './tasks/tasks.module';
     TasksModule,
   ],
   controllers: [AppController, WasabiController],
-  providers: [AppService],
+  providers: [AppService, WasabiService],
 })
 export class AppModule {}
