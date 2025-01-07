@@ -17,10 +17,10 @@ export class AppController {
   }
   @Get('/quiz_of_week')
   getQuizOfWeek() {
-    return this.appService.getQuiz();
+    return this.appService.getQuizData();
   }
   @Get('artwork_of_week')
   getArtOfWeek() {
-    return this.appService.getArtWork();
+    return this.appService.getArtWorkData();
   }
 }

@@ -8,6 +8,7 @@ import {
   DOWNLOAD_DESTINATION_PATH,
   WASABI_BUCKET_NAME,
 } from './const/env_keys.const';
+import { readGGrinJsonFile } from './util/json-reader.util';
 
 @Injectable()
 export class AppService {
@@ -39,11 +40,11 @@ export class AppService {
     return { 'artwork download': artworkResult, 'quiz download': quizResult };
   }
 
-  getArtWork() {
-    return artworkData1;
+  async getArtWorkData() {
+    return await readGGrinJsonFile('artwork_of_week');
   }
 
-  getQuiz() {
-    return quizData1;
+  async getQuizData(): Promise<any> {
+    return await readGGrinJsonFile('quiz_of_week');
   }
 }
